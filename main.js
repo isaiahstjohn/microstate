@@ -1,7 +1,3 @@
-function escape(s){
-  return s.replace(/[&<>]/g, c => "&#" + c.charCodeAt(0) + ";");
-}
-
 function Value({updater}={}){
   this.update = updater;
   this._value = undefined;
@@ -37,7 +33,7 @@ let wordList = document.getElementById("word-list");
 
 let titleVal = new Value();
 inputBox.addEventListener('keyup', 
-  () => titleVal.set(escape(inputBox.value)));
+  () => titleVal.set(inputBox.value));
 
 let charCountVal = new Value({
   updater: function (){
@@ -72,7 +68,7 @@ let punctuationListVal = new Value({
     let list = [... new Set(titleVal.value().match(/[^\w\s]/g))]
       .sort()
       .join('');
-    this.set(escape(list));
+    this.set(list);
   }});
 
 let wordListVal = new Value({
@@ -82,7 +78,7 @@ let wordListVal = new Value({
     )]
       .sort()
       .join(" ");
-    this.set(escape(list));
+    this.set(list);
   }});
 
 [[titleVal, title],
