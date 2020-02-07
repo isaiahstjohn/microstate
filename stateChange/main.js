@@ -6,7 +6,7 @@
  */
 
 Value.prototype.stateChange = function (dependencies, updateFun){
-  dependencyValues = Array.from({length: dependencies.length});
+  let dependencyValues = Array.from({length: dependencies.length});
   function replaceValue(newValue, newValueIndex){
     dependencyValues[newValueIndex] = newValue;
     this._value = updateFun(...dependencyValues);
